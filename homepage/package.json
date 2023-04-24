@@ -1,0 +1,45 @@
+{
+  "dependencies": {
+    "@emotion/react": "latest",
+    "@emotion/styled": "latest",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/joy": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "aos": "^2.3.4",
+    "fuse.js": "^6.6.2",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-feather": "^2.0.10",
+    "typescript": "latest"
+  },
+  "description": "The official VirtualLabs Experiment Panel",
+  "devDependencies": {
+    "@types/aos": "^3.0.4",
+    "css-loader": "^6.7.3",
+    "react-scripts": "latest",
+    "style-loader": "^3.3.2"
+  },
+  "main": "index.jsx",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "keywords": [],
+  "name": "virtuallabs",
+  "version": "0.0.54",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

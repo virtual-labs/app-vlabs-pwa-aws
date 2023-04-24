@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
+
+.note-card {
+  margin: 11%;
+  border-radius: 10px;
+  /* box-shadow: 5px 10px aliceblue; */
+  /* box-shadow: 5px 5px #dfedfa; */
+}
+
+.notes {
+  position: relative;
+  top: 100vh;
+  background-color: #dfedfa;
+}
+
+:root {
+  --dark: rgb(20, 20, 20);
+  --darkgreen: hsl(188, 74%, 82%);
+  --darkblue: #073642;
+  --yellow: rgb(74, 61, 4);
+  --blue: rgb(98, 0, 234);
+
+  --c1: rgb(118, 212, 248);
+  --c2: rgb(32, 241, 217);
+
+  --left-color: var(--c1);
+  --right-color: var(--c2);
+
+  --lightblue: rgb(222, 234, 243);
+}
+
+.side {
+  display: grid;
+  height: 66vh;
+  overflow-x: hidden;
+  place-items: center;
+  position: absolute;
+  width: 100%;
+
+  transition: all 0.1s linear;
+}
+
+.side .title {
+  font-size: 5rem;
+  /* margin: 0vw 27vw; */
+  /* width: 40vw; */
+}
+
+#left-side {
+  background-color: var(--left-color);
+  width: 53%;
+  z-index: 2;
+}
+
+#left-side .title {
+  color: var(--darkgreen);
+}
+
+#right-side {
+  background-color: var(--right-color);
+}
+
+#right-side .title {
+  color: var(--darkblue);
+}
+
+.desc {
+  font-family: "Roboto Slab", serif;
+  position: absolute;
+  top: 50%;
+  left: -3vw;
+  /* color: #0757b7; */
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin: 0px 27vw;
+  width: 50vw;
+  text-align: center;
+}
+
+.hacker {
+  font-family: "Space Mono", monospace;
+  position: absolute;
+  top: 13%;
+  left: -3vw;
+  margin: 0px 26.4vw;
+  width: 50vw;
+  text-align: center;
+}
+
+.hacker-left {
+  color: rgb(247, 229, 197);
+}
