@@ -188,7 +188,7 @@ All these have been configured in the `ap-southeast-2(Sydney)` region.
 
 ### Deployment and the Building of the APK
 
-Th easiest way to package the application for the Google Play Store is to use the [PWABuilder](https://www.pwabuilder.com) tool. 
+The easiest way to package the application for the Google Play Store is to use the [PWABuilder](https://www.pwabuilder.com) tool. 
 
 - Once the pwa is hosted on a url, go to the PWABuilder site and provide the url of the application. 
 - After that, you will be taken to a page where certain performance metrics of the PWA will be shown, and ways to improve the PWA. 
