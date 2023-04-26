@@ -185,3 +185,14 @@ The names of the Lambda functions are as follows:
 The DynamoDB table that has been created is named `PWA_EXP`
 
 All these have been configured in the `ap-southeast-2(Sydney)` region.
+
+### Deployment and the Building of the APK
+
+Th easiest way to package the application for the Google Play Store is to use the [PWABuilder](https://www.pwabuilder.com) tool. 
+
+- Once the pwa is hosted on a url, go to the PWABuilder site and provide the url of the application. 
+- After that, you will be taken to a page where certain performance metrics of the PWA will be shown, and ways to improve the PWA. 
+- There will be option to "Package for Stores" and choose the Google playstore option. 
+- The result will be downloadable zip file that contains the apk file, the aab file, the assetlinks.json file, and the signin keys
+- Now, after this add the assetlinks.json file to the server where the application is hosted at the location `.well-known/assetlinks.json`. The asstelinks.json file indicates the Android apps that are associated with the website and verify the app's URL intents. This removes the homebar from the android app's UI.
+- Now finally, you have all the required files in order to deploy the app to the playstore
