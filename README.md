@@ -10,6 +10,8 @@ This app displays all experiments hosted under the virtual labs site. It allows 
 
 The app has also been converted to an apk and hosted on the android play store. The app works seamlessly and due to using MUI Joy in combination with React, the app looks and feels like a native android app.
 
+The PWA has been deployed to [https://app.vlabs.ac.in](https://app.vlabs.ac.in/)
+
 # Target Audience
 
 ---
