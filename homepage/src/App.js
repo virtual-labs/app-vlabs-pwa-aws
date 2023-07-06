@@ -49,7 +49,7 @@ function App() {
       <Navbar setp={setPage} settp={setTotal} nav={nav} setNav={setNav} />
       <div className='columns is-vcentered is-mobile m-0'>
         <div className=" column mb-0 is-hidden-mobile is-hidden-tablet-only is-2-desktop ml-4 mt-2" >
-          <img className="image" style={{padding:"0px"}} width="200" height="200" src={"https://cdn.vlabs.ac.in/logo/vlead-large.png"}/>
+          <img alt="" className="image" style={{padding:"0px"}} width="200" height="200" src={"https://cdn.vlabs.ac.in/logo/vlead-large.png"}/>
         </div>
         <div className='column is-three-fifths-desktop ' style={{margin:"auto"}}>
           <div className="field has-addons">
@@ -72,7 +72,7 @@ function App() {
       
       <ExperimentLoader experiments={experiments} word={word} pagenum={page} setp={setPage} settp={setTotal} nav={nav} setNav={setNav} pop={Pop} />
       {
-        totalPage != 0 ?
+        totalPage !==0 ?
           <footer className="footer" style={{ padding: "2%", backgroundColor: "lightcyan" }}>
             <div className="content has-text-centered">
               <button className=' button is-dark has-text-white is-pulled-left ml-1' style={{ fontSize: '20px' }}

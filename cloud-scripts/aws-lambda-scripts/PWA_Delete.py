@@ -12,7 +12,7 @@ def lambda_handler(event, context):
         }
     )
 
-    if 'ResponseMetadata' in response and response['ResponseMetadata']['HTTPStatusCode'] == 200:
+    if 'ResponseMetadata' in response and response['ResponseMetadata']['HTTPStatusCode']===200:
         return {
             'statusCode': 200,
             'body': 'Item deleted successfully'

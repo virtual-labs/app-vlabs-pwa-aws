@@ -60,7 +60,7 @@ export default function ExperimentLoader(props) {
     const OpenLink = (link) => {
         let name
         for (let i of Display) {
-            if (i["Experiment URL"] == link)
+            if (i["Experiment URL"]===link)
                 name = i["Experiment Name"]
         }
         var a = localStorage.getItem("history");
@@ -70,7 +70,7 @@ export default function ExperimentLoader(props) {
         a += name
         let links = a.split(",");
         links = links.filter((ele) => {
-            return ele != ""
+            return ele !==""
         })
         links.reverse()
         setHistory(links.slice(0, 8))
@@ -155,21 +155,21 @@ export default function ExperimentLoader(props) {
     const ToggleSave = (exp) => {
         console.log(exp)
         if (saved.includes(exp)) {
-            var a = localStorage.getItem("saved");
+            let a = localStorage.getItem("saved");
             a = a.replace(exp, "")
             let saves = a.split(",");
             saves = saves.filter((ele) => {
-                return ele != ""
+                return ele !==""
             })
             setSaved(saves)
             localStorage.setItem("saved", saves.join(","))
         }
         else {
-            var a = localStorage.getItem("saved");
+            let a = localStorage.getItem("saved");
             a += "," + exp
             let saves = a.split(",");
             saves = saves.filter((ele) => {
-                return ele != ""
+                return ele !==""
             })
             setSaved(saves)
             localStorage.setItem("saved", saves.join(","))
@@ -186,12 +186,12 @@ export default function ExperimentLoader(props) {
         setApply(1);
     }
     const RenameFilter = (name) => {
-        if (name == "Filter1") setRename1(1 - rename1);
-        else if (name == "Filter2") setRename2(1 - rename2);
-        else if (name == "Filter3") setRename3(1 - rename3);
+        if (name==="Filter1") setRename1(1 - rename1);
+        else if (name==="Filter2") setRename2(1 - rename2);
+        else if (name==="Filter3") setRename3(1 - rename3);
     }
     const ChangeName = (name, val) => {
-        if (val && val != "") {
+        if (val && val !=="") {
             let a = JSON.parse(JSON.stringify(saved_filters))
             a[name]["AltName"] = val;
             setSavedFilters(a)
@@ -221,7 +221,7 @@ export default function ExperimentLoader(props) {
         }
         let links = a.split(",")
         links = links.filter((ele) => {
-            return ele != ""
+            return ele !==""
         })
         links.reverse()
         if (localStorage.getItem("saved") === null) {
@@ -229,7 +229,7 @@ export default function ExperimentLoader(props) {
         }
         else {
             setSaved(localStorage.getItem("saved").split(",").filter((ele) => {
-                return ele != "";
+                return ele !=="";
             }))
         }
         setInstis(arr)
@@ -269,8 +269,8 @@ export default function ExperimentLoader(props) {
             return;
         }
         for (let i of arr_after_search) {
-            if ((SelectDisciplines.includes(i["Discipline Name"]) || SelectDisciplines.length == 0) &&
-                (SelectInstis.includes(i["Insitute Name"]) || SelectInstis.length == 0)) {
+            if ((SelectDisciplines.includes(i["Discipline Name"]) || SelectDisciplines.length===0) &&
+                (SelectInstis.includes(i["Insitute Name"]) || SelectInstis.length===0)) {
                 arr.push(i)
             }
         }
@@ -343,7 +343,7 @@ export default function ExperimentLoader(props) {
                                     }
                                 </div></> : null}
                             {
-                                apply == 0 ? <>
+                                apply===0 ? <>
                                     <ul className='m-4' style={{ color: "black" }}>
                                         {saved_filters && saved_filters["Filter1"] ?
                                             <li className='mt-5'>
@@ -439,7 +439,7 @@ export default function ExperimentLoader(props) {
                     <br className='is-hidden-mobile is-hidden-tablet-only' />
                     <br className='is-hidden-mobile is-hidden-tablet-only' />
                     {
-                        props.nav == 0 ? (
+                        props.nav===0 ? (
                             <div className='columns is-mobile is-multiline'>
                                 {
                                     props.settp(Math.ceil(Display.length / 8))
@@ -466,7 +466,7 @@ export default function ExperimentLoader(props) {
                                 }
                             </div>) : null}
                     {
-                        props.nav == 1 ? (
+                        props.nav===1 ? (
                             <div className='columns is-multiline is-mobile'>
                                 {
                                     props.settp(Math.ceil(History.filter((ele) => {
@@ -514,7 +514,7 @@ export default function ExperimentLoader(props) {
                                 }
                             </div>) : null}
                     {
-                        props.nav == 2 ? (<div className='columns is-multiline is-mobile'>
+                        props.nav===2 ? (<div className='columns is-multiline is-mobile'>
                             {
                                 props.settp(Math.ceil(saved.filter((ele) => {
                                     for (let i of Display) {
@@ -565,7 +565,7 @@ export default function ExperimentLoader(props) {
                             }
                         </div>) : null}
                     {
-                        props.nav == 3 ? (<div className='columns is-multiline is-mobile'>
+                        props.nav===3 ? (<div className='columns is-multiline is-mobile'>
                             {
                                 props.settp(Math.ceil(Math.min(8, Display.length) / 8))
                             }
@@ -600,30 +600,30 @@ export default function ExperimentLoader(props) {
 
                         {apply ? <>
                             <span style={{ display: "inline-block", whiteSpace: "normal" }}>
-                                <a className='button is-info has-text-black is-medium' style={{ border: "2px solid black", borderTopLeftRadius: "20px", borderBottomLeftRadius: "20px" }}>
+                                <button className='button is-info has-text-black is-medium' style={{ border: "2px solid black", borderTopLeftRadius: "20px", borderBottomLeftRadius: "20px" }}>
                                     <BsFillStickyFill />{" "}Apply
-                                </a>
+                                </button>
                             </span>
                             <span style={{ display: "inline-block", whiteSpace: "normal" }}>
-                                <a className='button is-primary has-text-black is-medium' style={{ border: "2px solid black", borderTopRightRadius: "20px", borderBottomRightRadius: "20px" }} onClick={() => {
+                                <button className='button is-primary has-text-black is-medium' style={{ border: "2px solid black", borderTopRightRadius: "20px", borderBottomRightRadius: "20px" }} onClick={() => {
                                     setApply(0);
                                 }}>
                                     <BsFillSave2Fill />{" "}Load
-                                </a>
+                                </button>
 
                             </span></> : null}
                         {!apply ? <>
                             <span style={{ display: "inline-block", whiteSpace: "normal" }}>
-                                <a className='button is-primary has-text-black is-medium' style={{ border: "2px solid black", borderTopLeftRadius: "20px", borderBottomLeftRadius: "20px" }} onClick={() => {
+                                <button className='button is-primary has-text-black is-medium' style={{ border: "2px solid black", borderTopLeftRadius: "20px", borderBottomLeftRadius: "20px" }} onClick={() => {
                                     setApply(1);
                                 }}>
                                     <BsFillStickyFill />{" "}Apply
-                                </a>
+                                </button>
                             </span >
                             <span style={{ display: "inline-block", whiteSpace: "normal" }}>
-                                <a className='button is-info has-text-black is-medium' style={{ border: "2px solid black", borderTopRightRadius: "20px", borderBottomRightRadius: "20px" }}>
+                                <button className='button is-info has-text-black is-medium' style={{ border: "2px solid black", borderTopRightRadius: "20px", borderBottomRightRadius: "20px" }}>
                                     <BsFillSave2Fill />{" "}Load
-                                </a>
+                                </button>
 
                             </span></> : null}
 
@@ -687,7 +687,7 @@ export default function ExperimentLoader(props) {
                         </div>
                     </> : null}
                     {
-                        apply == 0 ? <>
+                        apply===0 ? <>
                             <ul style={{ color: "black", marginTop: "60px" }}>
                                 {saved_filters && saved_filters["Filter1"] ?
                                     <li className='mt-3'>

@@ -9,7 +9,7 @@ def lambda_handler(event, context):
     
     #2 - See if the person's token is valid
     auth = event['headers']["authorization"]
-    if auth == os.environ['auth_token']:
+    if auth===os.environ['auth_token']:
         auth = 'Allow'
     else:
         auth = 'Deny'
