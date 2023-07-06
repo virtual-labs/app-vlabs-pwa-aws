@@ -24,7 +24,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           # We specify the version of Node.js to use.
-          node-version: '16'
+          node-version: '18.13.0'
           # We check for the latest version of Node.js.
           check-latest: true
       
