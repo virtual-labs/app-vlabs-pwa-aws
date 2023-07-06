@@ -6,7 +6,7 @@ import 'bulma-switch'
 import { RxCounterClockwiseClock } from 'react-icons/rx'
 import { AiFillExperiment, AiFillStar, AiFillStepBackward, AiFillDelete, AiFillSave } from 'react-icons/ai'
 import { BsFillSave2Fill, BsFillBookmarkStarFill, BsFillBookmarkPlusFill, BsFillStickyFill } from 'react-icons/bs';
-import { Bulma_component } from 'yatharth-super-lemon'
+import { BulmaComponent } from 'yatharth-super-lemon'
 export default function ExperimentLoader(props) {
     const [Instis, setInstis] = useState(["option1-Insti", "option2-Insti"])
     const [Discipline, setDiscipline] = useState(["option1-discipline", "option2-dis"])
@@ -20,6 +20,8 @@ export default function ExperimentLoader(props) {
     const [rename1, setRename1] = useState(0);
     const [rename2, setRename2] = useState(0);
     const [rename3, setRename3] = useState(0);
+    const [Exp,setExp] = useState([])
+    const [Word,setWord] = useState("")
     const disc = {
         "Civil Engineering": "CIVIL",
         "Computer Science and Engineering": "CSE",
@@ -207,9 +209,13 @@ export default function ExperimentLoader(props) {
         window.alert("Filter deleted")
     }
     React.useEffect(() => {
+        setExp(props.experiments)
+        setWord(props.word)
+    }, [props]);
+    React.useEffect(() => {
         let arr = []
         let arr_dis = []
-        for (let i of props.experiments) {
+        for (let i of Exp) {
             if (!arr.includes(i["Insitute Name"]))
                 arr.push(i["Insitute Name"])
             if (!arr_dis.includes(i["Discipline Name"]))
@@ -234,26 +240,26 @@ export default function ExperimentLoader(props) {
         }
         setInstis(arr)
         setDiscipline(arr_dis)
-        setDisplay(props.experiments)
+        setDisplay(Exp)
         setHistory(links)
-    }, [props.experiments]);
+    }, [Exp]);
 
     React.useEffect(() => {
         let arr = []
         let arr_after_search = []
-        if (props.word === "") {
-            arr_after_search = [...props.experiments]
+        if (Word === "") {
+            arr_after_search = [...Exp]
         }
         else {
-            for (let i of props.experiments) {
-                if (i["Experiment Name"].toLowerCase().includes(props.word.toLowerCase()) ||
-                    i["Lab Name"].toLowerCase().includes(props.word.toLowerCase())) {
+            for (let i of Exp) {
+                if (i["Experiment Name"].toLowerCase().includes(Word.toLowerCase()) ||
+                    i["Lab Name"].toLowerCase().includes(Word.toLowerCase())) {
                     arr_after_search.push(i)
                 }
                 else {
                     let flag = false
                     for (let j of i["Tags"].split()) {
-                        if (j.toLowerCase().includes(props.word.toLowerCase())) {
+                        if (j.toLowerCase().includes(Word.toLowerCase())) {
                             flag = true;
                             break;
                         }
@@ -277,7 +283,7 @@ export default function ExperimentLoader(props) {
         setDisplay(arr)
         props.setp(1);
         props.settp(Math.ceil(arr.length / 8))
-    }, [SelectDisciplines, SelectInstis, props.word]);
+    }, [Exp,SelectDisciplines, SelectInstis, Word]);//eslint-disable-line
     return (
         <div>
             <div className="columns m-0 is-mobile">
@@ -448,7 +454,7 @@ export default function ExperimentLoader(props) {
                                     Display.slice((props.pagenum - 1) * 8, (props.pagenum) * 8).map((exp) => {
                                         return (
                                             <div className='column is-one-quarter-desktop' key={Math.random()} >
-                                                <Bulma_component onclickinglink={() => { OpenLink(exp["Experiment URL"]) }} onValueChange={() => { ToggleSave(exp["Experiment Name"]) }} UserData={{
+                                                <BulmaComponent onclickinglink={() => { OpenLink(exp["Experiment URL"]) }} onValueChange={() => { ToggleSave(exp["Experiment Name"]) }} UserData={{
                                                     exp_name: exp["Experiment Name"],
                                                     institute: exp["Insitute Name"],
                                                     exp_link: exp["Experiment URL"],
@@ -496,7 +502,7 @@ export default function ExperimentLoader(props) {
                                         }
                                         return (
                                             <div className='column is-one-quarter-desktop' key={Math.random()}>
-                                                <Bulma_component onclickinglink={() => { OpenLink(a["Experiment URL"]) }} onValueChange={() => { ToggleSave(a["Experiment Name"]) }} UserData={{
+                                                <BulmaComponent onclickinglink={() => { OpenLink(a["Experiment URL"]) }} onValueChange={() => { ToggleSave(a["Experiment Name"]) }} UserData={{
                                                     exp_name: a["Experiment Name"],
                                                     institute: a["Insitute Name"],
                                                     exp_link: a["Experiment URL"],
@@ -547,7 +553,7 @@ export default function ExperimentLoader(props) {
                                     }
                                     return (
                                         <div className='column is-one-quarter-desktop' key={Math.random()}>
-                                            <Bulma_component onclickinglink={() => { OpenLink(a["Experiment URL"]) }} onValueChange={() => { ToggleSave(a["Experiment Name"]) }} UserData={{
+                                            <BulmaComponent onclickinglink={() => { OpenLink(a["Experiment URL"]) }} onValueChange={() => { ToggleSave(a["Experiment Name"]) }} UserData={{
                                                 exp_name: a["Experiment Name"],
                                                 institute: a["Insitute Name"],
                                                 exp_link: a["Experiment URL"],
@@ -576,7 +582,7 @@ export default function ExperimentLoader(props) {
                                 }).slice(0, 8).slice((props.pagenum - 1) * 8, (props.pagenum) * 8).map((exp) => {
                                     return (
                                         <div className='column is-one-quarter-desktop' key={Math.random()}>
-                                            <Bulma_component onclickinglink={() => { OpenLink(exp["Experiment URL"]) }} onValueChange={() => { ToggleSave(exp["Experiment Name"]) }} UserData={{
+                                            <BulmaComponent onclickinglink={() => { OpenLink(exp["Experiment URL"]) }} onValueChange={() => { ToggleSave(exp["Experiment Name"]) }} UserData={{
                                                 exp_name: exp["Experiment Name"],
                                                 institute: exp["Insitute Name"],
                                                 exp_link: exp["Experiment URL"],
